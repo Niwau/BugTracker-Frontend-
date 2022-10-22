@@ -1,19 +1,8 @@
 import styled from "styled-components";
 
-interface ButtonProps {
-  children: React.ReactNode
-  href?: string
-}
-
-export const Button = (props: ButtonProps) => {
-  const tag = props.href ? "a" : "button";
-
-  return (
-    <Wrapper as={tag} {...props} />
-  )
-}
-
-export const Wrapper = styled.button`
+export const Button = styled.button`
+  text-align: center;
+  text-decoration: none;
   background-color: var(--blue-900);
   border: none;
   font-family: "Inter";

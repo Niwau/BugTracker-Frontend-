@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
-
 export const Form = styled.form`
   transform: translate(-50%, -50%);
   position: absolute;
@@ -29,16 +28,6 @@ export const Label = styled.label`
     font-size: 1.2rem;
 `
 
-export const Input = styled.input`
-	display: block;
-    height: 3.4rem;
-    padding: 0 1rem;
-    outline: none;
-    border: 1px solid var(--dark-700);
-    border-radius: 0.5rem;
-    transition: 0.3s;
-    background-color: white;
-`
 export const Anchor = styled(Link)`
 	color: var(--blue-900);
     text-decoration: none;

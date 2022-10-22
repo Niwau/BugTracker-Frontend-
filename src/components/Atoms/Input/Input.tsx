@@ -1,16 +1,6 @@
 import styled from 'styled-components';
 
-interface InputProps {
-  type?: 'email' | 'password'
-}
-
-export const Input = ({ type } : InputProps) => {
-  return (
-    <Wrapper type={type}/>
-  )
-}
-
-const Wrapper = styled.input`
+export const Input = styled.input`
   display: block;
   height: 3.4rem;
   padding: 0 1rem;
