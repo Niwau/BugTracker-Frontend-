@@ -8,7 +8,7 @@ export const Form = styled.form`
   left: 50%;
   padding: 6.4rem 3.2rem;
   border-radius: 1rem;
-  border: 1px solid var(--dark-700);
+  border: 1px solid var(--dark-600);
   width: 43.5rem;
   display: flex;
   flex-direction: column;

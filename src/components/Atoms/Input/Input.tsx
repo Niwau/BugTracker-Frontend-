@@ -5,7 +5,7 @@ export const Input = styled.input`
   height: 3.4rem;
   padding: 0 1rem;
   outline: none;
-  border: 1px solid var(--dark-700);
+  border: 1px solid var(--dark-600);
   border-radius: 0.5rem;
   transition: 0.3s;
   :focus {
