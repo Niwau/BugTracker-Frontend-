@@ -1,11 +1,16 @@
+import { useContext } from "react"
 import styled from "styled-components"
 import { OutlineButton } from "../components/Atoms/Button/OutlineButton"
 import { Select } from "../components/Atoms/Select/Select"
 import { Bug } from "../components/Molecules/Bug/Bug"
+import { AuthContext } from "../contexts/AuthContext"
+import { Login } from "./Login"
 
 export const Dashboard = () => {
 
-  return (
+  const { auth } = useContext(AuthContext)
+
+  return !auth ? <Login/> : (
     <Layout>
       <Bug title="Error at homepage" status="Solved" author="John Lennon"/>
       <Bug title="Error at homepage" status="Solved" author="John Lennon"/>

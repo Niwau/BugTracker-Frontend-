@@ -5,10 +5,10 @@ import { useRegisterForm } from "./useRegisterForm";
 
 export const RegisterForm = () => {
 
-  const { errors, handleSubmit, onFormError, onFormSubmit, register} = useRegisterForm()
+  const { errors, handleSubmit, onFormSubmit, register} = useRegisterForm()
 
   return (
-    <S.Form onSubmit={handleSubmit(onFormSubmit, onFormError)}>
+    <S.Form onSubmit={handleSubmit(onFormSubmit)}>
       <S.Title>Sign up</S.Title>
       <S.Blockquote>
         <S.Label htmlFor="name">Name</S.Label>

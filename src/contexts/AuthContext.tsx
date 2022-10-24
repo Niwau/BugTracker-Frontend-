@@ -1,27 +1,37 @@
-import React, { createContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import React, { createContext, useEffect, useState } from "react";
 
-interface Context {
-  auth: {
-    status: boolean
-    token: string
-  }
-  handleLogin: Function
+interface AuthContextProps {
+  auth: boolean
+  handleAuth: (status: boolean) => void
 }
 
-export const AuthContext = createContext<Context>({} as Context);
+const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 
-export const AuthContextProvider = ({ children } : { children: React.ReactNode }) => {
-	
-  const [auth, setAuth] = useState({ status: false, token: ''})
+const AuthContextProvider = ({ children } : { children: React.ReactNode }) => {
 
-  const handleLogin = (token : string) => {
-    setAuth({ status: true, token: token })
+  const [auth, setAuth] = useState(false)
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+
+    if (token) {
+      setAuth(true)
+    } else {
+      setAuth(false)
+    }
+
+  }, [])
+
+  function handleAuth(status: boolean) {
+    setAuth(status)
   }
 
   return (
-    <AuthContext.Provider value={{ auth, handleLogin }}>
+    <AuthContext.Provider value={{ auth, handleAuth }}>
       {children}
     </AuthContext.Provider>
-  );
-};
+  )
+}
+
+export { AuthContext, AuthContextProvider }

@@ -2,12 +2,18 @@ import * as S from "../Form.styles";
 import { Button } from "../../../Atoms/Button/Button";
 import { Input } from "../../../Atoms/Input/Input";
 import { useLoginForm } from "./useLoginForm";
+import { useContext } from "react";
+import { AuthContext } from "../../../../contexts/AuthContext";
+import { Dashboard } from "../../../../pages/Dashboard";
 
 export const LoginForm = () => {
-  const { errors, handleSubmit, register, onFormSubmit, onFormError } = useLoginForm();
 
-  return (
-    <S.Form onSubmit={handleSubmit(onFormSubmit, onFormError)}>
+  const { errors, handleSubmit, register, onFormSubmit } = useLoginForm();
+
+  const { auth } = useContext(AuthContext)
+
+  return !auth ? (
+    <S.Form onSubmit={handleSubmit(onFormSubmit)}>
       <S.Title>Sign in</S.Title>
       <S.Blockquote>
         <S.Label htmlFor="email">Email</S.Label>
@@ -25,5 +31,6 @@ export const LoginForm = () => {
         <S.Anchor to={"/register"}>Create account</S.Anchor>
       </S.Paragraph>
     </S.Form>
-  );
+  ) 
+  : <Dashboard/>
 };

@@ -1,46 +1,41 @@
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
+import axios from 'axios';
 import { AuthContext } from "./../../../../contexts/AuthContext";
 import { useContext } from "react";
-import { useNavigate } from "react-router";
 import { loginSchema } from "./../formSchemas";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { SubmitErrorHandler, SubmitHandler } from "react-hook-form";
+import { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
-import axios from "axios";
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
 
-export interface LoginFormData {
+export interface Data {
   email: string;
   password: string;
 }
 
 export const useLoginForm = () => {
-  const navigate = useNavigate();
-  const { handleLogin } = useContext(AuthContext);
+  
+  const { handleAuth } = useContext(AuthContext);
 
-  const onFormSubmit: SubmitHandler<LoginFormData> = (data) => {
-    axios
-      .post("http://localhost:3000/auth/login", data)
-      .then((res) => {
-        alert('Sucess!')
-      })
-      .catch((err) =>
-        setError("email", {
-          type: "custom",
-          message: err.response.data.response,
-        })
-      );
-  };
+  const navigate = useNavigate()
 
-  const onFormError: SubmitErrorHandler<LoginFormData> = (errors) => {};
+  const formConfig =  { resolver: yupResolver(loginSchema) }
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setError,
-  } = useForm<LoginFormData>({
-    resolver: yupResolver(loginSchema),
-  });
+  const { register, handleSubmit, formState: { errors }, setError } = useForm<Data>(formConfig);
 
-  return { register, handleSubmit, errors, onFormSubmit, onFormError };
+  const onFormSubmit : SubmitHandler<Data> = async (data) => {
+    try {
+      const response = await axios.post('http://localhost:3000/auth/login', data)
+      toast.success("You are logged in")
+      handleAuth(true)
+      Cookies.set('token', response.data.token, { expires: 3 })
+      navigate('/dashboard')
+
+    } catch (error : any) {
+      setError("email", { type: 'custom', message: error.response.data.response })
+    }
+  }
+
+  return { register, handleSubmit, errors, onFormSubmit };
 };
