@@ -5,11 +5,10 @@ export const Anchor = styled(Link)`
   text-decoration: none;
 `
 export const Wrapper = styled.div`
-  background-color: red;
   padding: 1.6rem;
   background-color: white;
   width: 100%;
-  height: 100%;
+  height: fit-content;
   border: 1px solid var(--dark-600);
   border-radius: 0.5rem;
   transition: 0.3s;

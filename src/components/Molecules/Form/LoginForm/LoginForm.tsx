@@ -4,7 +4,7 @@ import { Input } from "../../../Atoms/Input/Input";
 import { useLoginForm } from "./useLoginForm";
 import { useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
-import { Dashboard } from "../../../../pages/Dashboard";
+import { Dashboard } from "../../../../pages/Dashboard/Dashboard";
 
 export const LoginForm = () => {
 

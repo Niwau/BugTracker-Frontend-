@@ -9,7 +9,7 @@ import {
 
 import { Toast } from "./components/Atoms/Toast/Toast";
 import { AuthContextProvider } from "./contexts/AuthContext";
-import { Dashboard } from "./pages/Dashboard";
+import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Globals } from "./styles/Globals";

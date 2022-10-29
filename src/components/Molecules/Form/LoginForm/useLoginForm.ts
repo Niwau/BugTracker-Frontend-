@@ -1,3 +1,4 @@
+import { API_ENDPOINT } from './../../../../services/api';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
@@ -26,10 +27,10 @@ export const useLoginForm = () => {
 
   const onFormSubmit : SubmitHandler<Data> = async (data) => {
     try {
-      const response = await axios.post('http://localhost:3000/auth/login', data)
+      const response = await axios.post(`${API_ENDPOINT}/auth/login`, data)
       toast.success("You are logged in")
       handleAuth(true)
-      Cookies.set('token', response.data.token, { expires: 3 })
+      Cookies.set('token', response.data.token, { expires: 1 })
       navigate('/dashboard')
 
     } catch (error : any) {

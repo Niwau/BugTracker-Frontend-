@@ -5,4 +5,6 @@ export const Select = styled.select`
   border: 1px solid var(--dark-600);
   outline: none;
   box-shadow: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
 `
