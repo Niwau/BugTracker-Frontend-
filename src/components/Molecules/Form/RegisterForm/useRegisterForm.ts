@@ -1,10 +1,9 @@
-import { API_ENDPOINT } from './../../../../services/api';
+import { api } from './../../../../services/api';
 import { toast } from 'react-toastify';
 import { registerSchema } from "./../formSchemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { useNavigate } from "react-router";
 
 export interface Data {
@@ -24,7 +23,7 @@ export const useRegisterForm = () => {
 
   const onFormSubmit: SubmitHandler<Data> = async (data) => {
     try {
-      await axios.post(`${API_ENDPOINT}/auth/register`, data)
+      await api.post('/auth/register', data)
       toast.success('You account was created!')
       navigate('/')
       
