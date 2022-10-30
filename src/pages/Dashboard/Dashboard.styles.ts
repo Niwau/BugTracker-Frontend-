@@ -18,8 +18,21 @@ export const Layout = styled.div`
 `
 
 export const BugsWrapper = styled.main`
-  justify-content: center;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 1.6rem;
+  align-content: space-between;
+`
+
+export const ButtonsWrapper = styled.footer`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column: 1/3;
+  grid-template-rows: auto;
+  gap: 1.6rem;
+
+  > div {
+    display: flex;
+    gap: 1.6rem;
+  }
 `
