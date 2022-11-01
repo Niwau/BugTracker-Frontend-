@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Input = styled.input`
+  font-family: 'Inter', sans-serif;
   display: block;
   height: 3.4rem;
   padding: 0 1rem;

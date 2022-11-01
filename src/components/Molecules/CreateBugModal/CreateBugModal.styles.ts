@@ -6,6 +6,7 @@ export const Textarea = styled.textarea`
   border-radius: 0.5rem;
   border: 1px solid var(--dark-600);
   padding: 1rem;
+  font-family: 'Inter', sans-serif;
 `;
 
 export const ModalWrapper = styled.div`

@@ -1,4 +1,5 @@
-import { ButtonsWrapper } from "../../../pages/Dashboard/Dashboard.styles";
+import { useCallback, useRef } from "react";
+import { api } from "../../../services/api";
 import { Button } from "../../Atoms/Button/Button";
 import { OutlineButton } from "../../Atoms/Button/OutlineButton";
 import { Input } from "../../Atoms/Input/Input";
@@ -13,20 +14,35 @@ interface CreateBugModalProps {
 }
 
 export const CreateBugModal = (props: CreateBugModalProps) => {
+
+  const Title = useRef<HTMLInputElement>(null);
+  const Description = useRef<HTMLTextAreaElement>(null)
+  const Status = useRef<HTMLSelectElement>(null)
+
+  const reportBug = useCallback(async () => {
+    api.post('/api/bugs', {
+      title: Title?.current?.value,
+      description: Description?.current?.value,
+      status: Status?.current?.value
+    })
+    .then((res) => console.log(res.data))
+    .catch((err) => console.log(err))
+  }, [])
+
   return (
     <Modal {...props}>
       <S.ModalWrapper>
         <InputGroup>
           <Label>Title</Label>
-          <Input />
+          <Input ref={Title} />
         </InputGroup>
         <InputGroup>
           <Label>Description</Label>
-          <S.Textarea cols={30} rows={5} />
+          <S.Textarea ref={Description} cols={30} rows={5} />
         </InputGroup>
         <InputGroup>
           <Label>Status</Label>
-          <Select>
+          <Select ref={Status}>
             <option>Solved</option>
             <option>Low</option>
             <option>Medium</option>
@@ -34,7 +50,7 @@ export const CreateBugModal = (props: CreateBugModalProps) => {
           </Select>
         </InputGroup>
         <S.ModalFooter>
-          <Button>Report new bug</Button>
+          <Button onClick={() => reportBug()}>Report new bug</Button>
           <OutlineButton>Cancel</OutlineButton>
         </S.ModalFooter>
       </S.ModalWrapper>
