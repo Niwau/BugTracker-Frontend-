@@ -39,7 +39,7 @@ export const Paragraph = styled.p`
   font-size: 1.2rem;
 `;
 
-export const Blockquote = styled.blockquote`
+export const InputGroup = styled.blockquote`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

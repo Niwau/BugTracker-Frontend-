@@ -9,7 +9,8 @@ export const Button = styled.button`
   font-size: 1.2rem;
   font-weight: 700;
   color: white;
-  padding: 1rem 2rem;
+  padding: 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  flex-basis: 100%;
 `;

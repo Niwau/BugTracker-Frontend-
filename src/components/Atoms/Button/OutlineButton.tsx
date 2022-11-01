@@ -11,6 +11,7 @@ export const OutlineButton = styled.button`
   transition: 0.5s;
   cursor: pointer;
   outline: none;
+  flex-basis: 100%;
 
   :hover {
     background-color: var(--blue-900);

@@ -15,16 +15,16 @@ export const LoginForm = () => {
   return !auth ? (
     <S.Form onSubmit={handleSubmit(onFormSubmit)}>
       <S.Title>Sign in</S.Title>
-      <S.Blockquote>
+      <S.InputGroup>
         <S.Label htmlFor="email">Email</S.Label>
         <Input id="email" {...register("email")} />
         <S.InputErrors>{errors?.email?.message}</S.InputErrors>
-      </S.Blockquote>
-      <S.Blockquote>
+      </S.InputGroup>
+      <S.InputGroup>
         <S.Label htmlFor="password">Password</S.Label>
         <Input id="password" type="password" {...register("password")} />
         <S.InputErrors>{errors?.password?.message}</S.InputErrors>
-      </S.Blockquote>
+      </S.InputGroup>
       <Button>Sign in</Button>
       <S.Paragraph>
         Don't have an account?{" "}
